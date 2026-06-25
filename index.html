@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acoustic Aura | Concert & Resort Event Production | Hawaii</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #0D1B2A;
+    --deep:   #111D2C;
+    --gold:   #C8A96E;
+    --gold2:  #E2C48A;
+    --smoke:  #A8B4C0;
+    --white:  #F2F4F6;
+    --dim:    #6B7A8A;
+    --card:   #162031;
+    --border: rgba(200,169,110,0.18);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: rgba(13,27,42,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--smoke); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.6rem 1.4rem; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold2); }
+
+  /* HERO */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 8rem 4rem 5rem; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 85% 40%, rgba(200,169,110,0.09) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 70% at 5% 90%, rgba(46,117,182,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  /* Waveform decoration */
+  .hero-wave {
+    position: absolute; right: 4rem; top: 50%; transform: translateY(-50%);
+    display: flex; align-items: center; gap: 5px; opacity: 0.18;
+    animation: fadeUp 1s 1s forwards;
+  }
+  .hero-wave span {
+    display: block; width: 4px; background: var(--gold); border-radius: 2px;
+    animation: wave 1.4s ease-in-out infinite;
+  }
+  .hero-wave span:nth-child(1)  { height: 20px; animation-delay: 0s; }
+  .hero-wave span:nth-child(2)  { height: 45px; animation-delay: 0.1s; }
+  .hero-wave span:nth-child(3)  { height: 70px; animation-delay: 0.2s; }
+  .hero-wave span:nth-child(4)  { height: 110px; animation-delay: 0.3s; }
+  .hero-wave span:nth-child(5)  { height: 160px; animation-delay: 0.4s; }
+  .hero-wave span:nth-child(6)  { height: 200px; animation-delay: 0.5s; }
+  .hero-wave span:nth-child(7)  { height: 240px; animation-delay: 0.6s; }
+  .hero-wave span:nth-child(8)  { height: 200px; animation-delay: 0.7s; }
+  .hero-wave span:nth-child(9)  { height: 160px; animation-delay: 0.8s; }
+  .hero-wave span:nth-child(10) { height: 110px; animation-delay: 0.9s; }
+  .hero-wave span:nth-child(11) { height: 70px;  animation-delay: 1s; }
+  .hero-wave span:nth-child(12) { height: 45px;  animation-delay: 1.1s; }
+  .hero-wave span:nth-child(13) { height: 20px;  animation-delay: 1.2s; }
+  @keyframes wave {
+    0%, 100% { transform: scaleY(1); }
+    50%       { transform: scaleY(0.5); }
+  }
+
+  .hero-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.7s 0.2s forwards; }
+  .hero-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(4.5rem, 11vw, 10rem); line-height: 0.92; letter-spacing: 0.02em; color: var(--white); opacity: 0; animation: fadeUp 0.7s 0.35s forwards; }
+  .hero-title span { color: var(--gold); display: block; }
+  .hero-sub { font-size: clamp(1rem, 1.8vw, 1.2rem); font-weight: 300; color: var(--smoke); max-width: 520px; line-height: 1.75; margin-top: 1.8rem; margin-bottom: 2.8rem; opacity: 0; animation: fadeUp 0.7s 0.5s forwards; }
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+  .hero-actions { display: flex; gap: 1.2rem; align-items: center; opacity: 0; animation: fadeUp 0.7s 0.65s forwards; }
+
+  .btn-primary { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 1rem 2.2rem; text-decoration: none; display: inline-block; transition: background 0.2s, transform 0.15s; }
+  .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); }
+  .btn-ghost { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--smoke); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s; }
+  .btn-ghost:hover { color: var(--gold); }
+
+  /* MARQUEE */
+  .marquee-wrap { background: var(--gold); overflow: hidden; padding: 0.75rem 0; position: relative; z-index: 1; }
+  .marquee-track { display: flex; animation: marquee 24s linear infinite; width: max-content; }
+  .marquee-item { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.15em; color: var(--navy); padding: 0 2rem; white-space: nowrap; }
+  .marquee-dot { color: rgba(13,27,42,0.3); padding: 0 0.4rem; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* SECTIONS */
+  section { position: relative; z-index: 1; padding: 7rem 4rem; }
+  .section-label { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 6vw, 5rem); line-height: 1; letter-spacing: 0.03em; color: var(--white); margin-bottom: 1.5rem; }
+
+  /* TWO MARKETS */
+  #markets { background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .markets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; margin-top: 4rem; background: var(--border); }
+
+  .market-card {
+    background: var(--card); padding: 4rem 3rem; position: relative; overflow: hidden; transition: background 0.3s;
+  }
+  .market-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.35s;
+  }
+  .market-card:hover { background: #1a2840; }
+  .market-card:hover::before { transform: scaleX(1); }
+
+  .market-icon {
+    font-family: 'Bebas Neue', sans-serif; font-size: 5rem;
+    color: rgba(200,169,110,0.1); line-height: 1; margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+  .market-card:hover .market-icon { color: rgba(200,169,110,0.2); }
+
+  .market-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 0.04em; color: var(--white); margin-bottom: 1.2rem; line-height: 1.05; }
+  .market-desc { font-size: 0.92rem; color: var(--smoke); line-height: 1.8; font-weight: 300; margin-bottom: 2rem; }
+  .market-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .market-list li { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); padding-left: 1rem; position: relative; }
+  .market-list li::before { content: '—'; position: absolute; left: 0; color: rgba(200,169,110,0.4); }
+
+  /* SERVICES */
+  #services { background: var(--navy); }
+  .services-intro { font-size: 1.05rem; color: var(--smoke); max-width: 620px; line-height: 1.85; margin-bottom: 4rem; font-weight: 300; }
+  .services-intro strong { color: var(--white); font-weight: 500; }
+
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); }
+  .service-card {
+    background: var(--card); padding: 2.5rem 2rem; transition: background 0.3s;
+    border-bottom: 3px solid transparent; transition: background 0.3s, border-color 0.3s;
+  }
+  .service-card:hover { background: #1a2840; border-color: var(--gold); }
+  .service-num { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--dim); margin-bottom: 1rem; }
+  .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.05em; color: var(--white); margin-bottom: 0.8rem; line-height: 1.1; }
+  .service-desc { font-size: 0.82rem; color: var(--smoke); line-height: 1.7; font-weight: 300; }
+
+  /* STATS BAND */
+  .stats-band {
+    background: var(--gold); position: relative; z-index: 1;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .stat-block { padding: 3.5rem 3rem; border-right: 1px solid rgba(13,27,42,0.15); }
+  .stat-block:last-child { border-right: none; }
+  .stat-number { font-family: 'Bebas Neue', sans-serif; font-size: 4.5rem; color: var(--navy); line-height: 1; margin-bottom: 0.3rem; }
+  .stat-label { font-size: 0.85rem; color: rgba(13,27,42,0.7); line-height: 1.5; font-weight: 400; }
+
+  /* ABOUT */
+  #about { background: var(--deep); border-top: 1px solid var(--border); }
+  .about-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 6rem; margin-top: 4rem; align-items: start; }
+  .about-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.5rem 1rem; margin-bottom: 1.5rem; }
+  .about-name { font-family: 'Bebas Neue', sans-serif; font-size: 3.8rem; line-height: 1; color: var(--white); margin-bottom: 0.4rem; }
+  .about-role { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+  .about-bio p { font-size: 0.93rem; color: var(--smoke); line-height: 1.85; font-weight: 300; margin-bottom: 1.1rem; }
+  .about-bio p strong { color: var(--white); font-weight: 500; }
+
+  .creds-stack { display: flex; flex-direction: column; gap: 1.5px; }
+  .cred-row {
+    background: var(--card); padding: 1.4rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-left: 3px solid transparent; transition: border-color 0.2s, background 0.2s;
+  }
+  .cred-row:hover { border-color: var(--gold); background: #1a2840; }
+  .cred-label { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dim); }
+  .cred-value { font-size: 0.9rem; font-weight: 500; color: var(--white); }
+  .cred-badge { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 0.25rem 0.6rem; }
+
+  /* CONTACT */
+  #contact { background: var(--navy); border-top: 1px solid var(--border); text-align: center; }
+  #contact .section-title { font-size: clamp(3rem, 9vw, 8rem); margin-bottom: 1rem; line-height: 0.95; }
+  .contact-sub { font-size: 1rem; color: var(--smoke); max-width: 440px; margin: 0 auto 3rem; line-height: 1.7; font-weight: 300; }
+  .contact-methods { display: flex; justify-content: center; gap: 4rem; margin-bottom: 4rem; flex-wrap: wrap; }
+  .contact-method { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+  .contact-method-label { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--dim); }
+  .contact-method-value { font-size: 1rem; color: var(--white); font-weight: 400; text-decoration: none; border-bottom: 1px solid transparent; transition: color 0.2s, border-color 0.2s; }
+  .contact-method-value:hover { color: var(--gold); border-color: var(--gold); }
+  .contact-cta { display: inline-block; font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--navy); background: var(--gold); padding: 1.2rem 3.5rem; text-decoration: none; transition: background 0.2s, transform 0.15s; margin-bottom: 5rem; }
+  .contact-cta:hover { background: var(--gold2); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: var(--deep); border-top: 1px solid var(--border); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 1; }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; letter-spacing: 0.12em; color: var(--gold); }
+  .footer-copy { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--dim); text-transform: uppercase; }
+  .footer-loc { font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--dim); text-transform: uppercase; text-align: right; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    #hero { padding: 7rem 2rem 4rem; }
+    .markets-grid { grid-template-columns: 1fr; }
+    .services-grid { grid-template-columns: 1fr; }
+    .stats-band { grid-template-columns: 1fr; }
+    .stat-block { border-right: none; border-bottom: 1px solid rgba(13,27,42,0.15); }
+    .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-wave { display: none; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer-loc { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Acoustic Aura</a>
+  <ul class="nav-links">
+    <li><a href="#markets">What We Do</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book a Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-wave">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="hero-eyebrow">Concert & Resort Event Production · Hawaii</div>
+  <h1 class="hero-title">
+    Acoustic<br>
+    <span>Aura</span>
+  </h1>
+  <p class="hero-sub">
+    <strong>When the stage has to be perfect and the resort can't afford a bad night</strong> — we're the production team that makes it happen. End-to-end event management across Hawaii's concert venues and resort corridor.
+  </p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Start the Conversation</a>
+    <a href="#markets" class="btn-ghost">See Our Work →</a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Concert Production <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Resort Events <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Wailea & Kaanapali <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Live Sound & AV <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Vendor Management <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Galas & Incentive Groups <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Honolulu · Maui · Kauai · Big Island <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Hybrid & Livestream <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Concert Production <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Resort Events <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Wailea & Kaanapali <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Live Sound & AV <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Vendor Management <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Galas & Incentive Groups <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Honolulu · Maui · Kauai · Big Island <span class="marquee-dot">·</span></span>
+    <span class="marquee-item">Hybrid & Livestream <span class="marquee-dot">·</span></span>
+  </div>
+</div>
+
+<!-- MARKETS -->
+<section id="markets">
+  <div class="section-label reveal">Two Markets. One Standard.</div>
+  <h2 class="section-title reveal">Where We<br>Do Our Best Work.</h2>
+
+  <div class="markets-grid">
+    <div class="market-card reveal">
+      <div class="market-icon">♪</div>
+      <div class="market-title">Concert & Live Event Production</div>
+      <p class="market-desc">From intimate venue shows to large-scale outdoor concerts, we manage every layer of the production — audio, video, lighting, staging, rigging, backline, and crew. You focus on the artist and the audience. We handle everything else.</p>
+      <p class="market-desc">Hawaii's live music scene is growing. We're built for it.</p>
+      <ul class="market-list">
+        <li>Concert & festival productions island-wide</li>
+        <li>Full vendor sourcing & coordination</li>
+        <li>Stage management & show-day execution</li>
+        <li>Audio engineering & AV technical direction</li>
+        <li>Load-in through strike — fully managed</li>
+      </ul>
+    </div>
+    <div class="market-card reveal">
+      <div class="market-icon">◈</div>
+      <div class="market-title">Resort & Corporate Events</div>
+      <p class="market-desc">Hawaii's resort corridor — Wailea, Kaanapali, Waikiki — runs on flawless execution. Incentive groups, executive galas, corporate conferences, and multi-day productions where every detail is visible and every failure is felt.</p>
+      <p class="market-desc">We bring the technical depth and operational discipline that high-end properties demand.</p>
+      <ul class="market-list">
+        <li>Grand Wailea, Four Seasons, Andaz & beyond</li>
+        <li>Incentive groups & executive galas</li>
+        <li>Corporate conferences & hybrid events</li>
+        <li>Multi-vendor coordination under one PM</li>
+        <li>Seamless client communication throughout</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stat-block reveal">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Years in live audio, AV production, and technical project management</div>
+  </div>
+  <div class="stat-block reveal">
+    <div class="stat-number">$250K+</div>
+    <div class="stat-label">AV equipment managed and maintained at the Savannah International Convention Center</div>
+  </div>
+  <div class="stat-block reveal">
+    <div class="stat-number">4</div>
+    <div class="stat-label">Islands covered — Oahu, Maui, Kauai, and the Big Island</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label reveal">Full Scope. No Gaps.</div>
+  <h2 class="section-title reveal">Everything the<br>Production Needs.</h2>
+  <p class="services-intro reveal">
+    We're not just AV. We're not just logistics. <strong>We're the single point of contact that owns the entire production</strong> — so your team never has to manage vendors, chase confirmations, or wonder what's happening on show day.
+  </p>
+
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-name">Production Management</div>
+      <div class="service-desc">End-to-end ownership from the first brief through final strike. Budget, schedule, vendors, and stakeholders — all managed under one roof.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">02</div>
+      <div class="service-name">AV & Technical Direction</div>
+      <div class="service-desc">Networked audio, video projection, LED, signal flow, and hybrid streaming — designed, deployed, and personally verified.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">03</div>
+      <div class="service-name">Vendor Coordination</div>
+      <div class="service-desc">We source, contract, and manage every vendor — audio, staging, lighting, rigging, backline, décor, and trucking — so you don't have to.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">04</div>
+      <div class="service-name">Live Sound & Audio Engineering</div>
+      <div class="service-desc">Technical audio management for concerts and events — from system design and speaker placement to front-of-house support on show day.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">05</div>
+      <div class="service-name">Show Day Execution</div>
+      <div class="service-desc">Calm, focused leadership on show day. Real-time problem solving so clients never feel the turbulence — only the result.</div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-num">06</div>
+      <div class="service-name">Hybrid & Livestream Events</div>
+      <div class="service-desc">Real experience built during COVID — helped launch online worship experiences for 10 churches during the pandemic — built from scratch. Broadcast-quality audio and video for in-room and remote audiences, seamlessly integrated.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label reveal">The Person Behind It</div>
+  <h2 class="section-title reveal">Built on<br>Real Experience.</h2>
+
+  <div class="about-layout">
+    <div class="about-left reveal">
+      <div class="about-badge">Founder & Lead PM</div>
+      <div class="about-name">Jeremy L.<br>Motley</div>
+      <div class="about-role">Event Production & AV Project Manager · Hawaii</div>
+      <div class="about-bio">
+        <p>I started at the board — mixing consoles, signal flow, live sound for churches and venues. I trained at FIRST Institute in Recording Arts and Show Production, <strong>graduating valedictorian in 2019</strong>, and went straight into live production work in Orlando and Savannah.</p>
+        <p>As a <strong>US Army veteran</strong>, I brought that same discipline into a contracting opportunity in Baghdad supporting AV and communications systems for CENTCOM — and later at US Pacific Command in Pearl Harbor. When COVID hit, I also kept the audio side going — running front-of-house for congregations pivoting to online services and <strong>helping launch online worship experiences for 10 churches during the pandemic</strong>, building real hybrid and livestream production experience in the process.</p>
+        <p>Acoustic Aura is where both sides come together. <strong>Audio is what I know. Production is what I do. Hawaii is where I'm building it.</strong></p>
+      </div>
+    </div>
+
+    <div class="about-right reveal">
+      <div class="creds-stack">
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Current Role</div>
+            <div class="cred-value">Senior AV Technician · GDIT / PACOM</div>
+          </div>
+          <span class="cred-badge">Pearl Harbor</span>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Previous Role</div>
+            <div class="cred-value">VTC Engineer · PAE / CENTCOM</div>
+          </div>
+          <span class="cred-badge">Baghdad & Al Asad</span>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Live Production</div>
+            <div class="cred-value">LiVe Church Orlando · Imperial Audio · Savannah Convention Center</div>
+          </div>
+          <span class="cred-badge">FOH & PM</span>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Military Service</div>
+            <div class="cred-value">United States Army · Veteran</div>
+          </div>
+          <span class="cred-badge">Served</span>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Security Clearance</div>
+            <div class="cred-value">TS/SCI with CI Polygraph</div>
+          </div>
+          <span class="cred-badge">Active</span>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Networking</div>
+            <div class="cred-value">Cisco CCNA</div>
+          </div>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Security</div>
+            <div class="cred-value">CompTIA Security+</div>
+          </div>
+        </div>
+        <div class="cred-row">
+          <div>
+            <div class="cred-label">Education</div>
+            <div class="cred-value">Recording Arts & Show Production · FIRST Institute</div>
+          </div>
+          <span class="cred-badge">Valedictorian</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label reveal">Ready When You Are</div>
+  <h2 class="section-title reveal">Let's Build<br>Something<br>Worth Hearing.</h2>
+  <p class="contact-sub reveal">Concert, gala, conference, or festival — the conversation starts here. Tell us what you're building.</p>
+
+  <div class="contact-methods reveal">
+    <div class="contact-method">
+      <span class="contact-method-label">Email</span>
+      <a href="mailto:jeremy.motley12@gmail.com" class="contact-method-value">jeremy.motley12@gmail.com</a>
+    </div>
+    <div class="contact-method">
+      <span class="contact-method-label">Phone</span>
+      <a href="tel:9123212069" class="contact-method-value">912-321-2069</a>
+    </div>
+    <div class="contact-method">
+      <span class="contact-method-label">Base</span>
+      <span class="contact-method-value">Honolulu, HI · All Islands</span>
+    </div>
+  </div>
+
+  <a href="mailto:jeremy.motley12@gmail.com" class="contact-cta reveal">Get in Touch</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Acoustic Aura</div>
+  <div class="footer-copy">© 2026 Acoustic Aura LLC · All Rights Reserved</div>
+  <div class="footer-loc">Honolulu, Hawaii<br>Concert & Resort Event Production</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 75);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
